@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path[0] = str(Path(sys.path[0]).parent)
+
 from django.contrib import admin
 from .models import Person, Occupation, PhonePerson, Customer, Employee, \
     PhoneEmployee, Seller
@@ -66,7 +70,8 @@ class SellerAdmin(PersonAdmin):
     form = EmployeeAdminForm
 
     def save_model(self, request, obj, form, change):
-        obj.occupation = 'Vendedor'
+        #obj.occupation = 'Vendedor'
+        obj.occupation = Occupation.objects.filter(occupation='Vendedor').first()
         super(SellerAdmin, self).save_model(request, obj, form, change)
 
 admin.site.register(Occupation)

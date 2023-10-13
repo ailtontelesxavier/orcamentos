@@ -19,3 +19,4 @@ pytz==2019.1
 requests==2.23.0
 six==1.12.0
 termcolor==1.1.0
+model_mommy==2.0.0
